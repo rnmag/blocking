@@ -1,0 +1,32 @@
+install.packages("blockTools", "foreign")
+library(blockTools)
+library(foreign)
+
+db <- read.dta("C:\\Users\\Rafael\\Downloads\\DATABASE.dta")
+dim(db)
+
+# Criar variável de ID
+db$ID <- paste(as.character(db$uba), as.character(db$number))
+
+# Limpar base e excluir NA
+db <- na.omit(db[,c(12:13, 17, 28, 35:38, 71)])
+
+
+# any(sapply(db, is.nan))
+# any(sapply(db, is.infinite))
+
+# Criar os blocos com base em 8 covariáveis
+pares <- block(db, id.vars = "ID", blockvars = c("gender",
+                                                 "ideology",
+                                                 "visited",
+                                                 "income",
+                                                 "polperception",
+                                                 "q3",
+                                                 "q4",
+                                                 "q6"))
+
+# Ver os pares criados
+View(pares$blocks)
+
+# Atribuir tratamento e controle
+(tratamento <- assignment(pares))
