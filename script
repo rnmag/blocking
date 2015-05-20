@@ -11,7 +11,7 @@ db$ID <- paste(as.character(db$uba), as.character(db$number))
 # Limpar base e excluir NA
 db <- na.omit(db[,c(12:13, 17, 28, 35:38, 71)])
 
-
+# Diagnóstico do banco
 # any(sapply(db, is.nan))
 # any(sapply(db, is.infinite))
 
