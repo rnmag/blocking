@@ -2,6 +2,8 @@ install.packages("blockTools", "foreign")
 library(blockTools)
 library(foreign)
 
+# Para fazer o download dos dados: https://drive.google.com/open?id=0B4tTRechGIVvME82Tm1NN1N4M3c&authuser=0
+
 db <- read.dta("C:\\Users\\Rafael\\Downloads\\DATABASE.dta")
 dim(db)
 
